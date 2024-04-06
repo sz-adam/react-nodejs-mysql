@@ -3,6 +3,8 @@ const mysql = require("mysql");
 const cors = require("cors");
 const path = require("path");
 const app = express();
+const PDFDocument = require('pdfkit');
+
 
 app.use(express.static(path.join(__dirname, "public")));
 app.use(cors());
@@ -70,6 +72,33 @@ app.delete("/delete/:id", (req, res) => {
     if (err)
       return res.json({ message: "Something unexpected has occured" + err });
     return res.json({ success: "Student updated successfully" });
+  });
+});
+
+app.get("/download_pdf/:id", (req, res) => {
+  const id = req.params.id;
+
+  db.query("SELECT * FROM student_details WHERE `id`= ?", [id], (err, result) => {
+    if (err) {
+      res.status(500).json({ message: "Server error" });
+      return;
+    }
+
+    const student = result[0];
+
+    const doc = new PDFDocument();
+    doc.fontSize(16);
+    doc.text(`Student Details - ${student.name}`, 15, 15);
+    doc.text(`ID: ${student.id}`, 15, 30);
+    doc.text(`Name: ${student.name}`, 15, 45);
+    doc.text(`Email: ${student.email}`, 15, 60);
+    doc.text(`Age: ${student.age}`, 15, 75);
+    doc.text(`Gender: ${student.gender}`, 15, 90);
+
+    res.setHeader('Content-Type', 'application/pdf');
+    res.setHeader('Content-Disposition', `attachment; filename=${student.name}.pdf`);
+    doc.pipe(res);
+    doc.end();
   });
 });
 

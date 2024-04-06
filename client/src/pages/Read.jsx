@@ -13,10 +13,17 @@ function Read() {
       })
       .catch((err) => console.log(err));
   }, [id]);
+
+  const handleDownloadPdf = () => {
+    const url = `${import.meta.env.VITE_API_URL}/download_pdf/${id}`;
+    window.open(url, '_blank'); 
+  };
+
   return (
     <div className="container-fluid vw-100 vh-100 bg-primary">
       <h1>User {id}</h1>
       <Link to="/" className="btn btn-success">Back</Link>
+      <button onClick={handleDownloadPdf} className="btn btn-primary">Download PDF</button>
       {data.map((student) => {
         return (
           <ul className="list-group d-flex justify-content-center  text-center" style={{width:'50%'}} key={student.id}>

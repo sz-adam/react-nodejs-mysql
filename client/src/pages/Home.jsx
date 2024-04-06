@@ -30,6 +30,7 @@ function Home() {
       })
       .catch((err) => console.log(err));
   }
+  
 
   return (
     <div className="container-fluid bg-primary vh-100 vw-100">
@@ -79,7 +80,7 @@ function Home() {
                         onClick={() => handleDelete(student.id)}
                       >
                         Delete
-                      </button>
+                      </button>                    
                     </td>
                   </tr>
                 );
