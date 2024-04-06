@@ -27,6 +27,14 @@ app.post("/add_user", (req, res) => {
   });
 });
 
+app.get("/students", (req, res) => {
+  const sql = "SELECT * FROM student_details";
+  db.query(sql, (err, result) => {
+    if (err) res.json({ message: "Server error" });
+    return res.json(result);
+  });
+});
+
 app.listen(port, () => {
   console.log(`listening on port ${port} `);
 });
