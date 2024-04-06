@@ -16,7 +16,17 @@ const db = mysql.createConnection({
   database: "students",
 });
 
+app.post("/add_user", (req, res) => {
+  const sql =
+    "INSERT INTO student_details (`name`,`email`,`age`,`gender`) VALUES (?, ?, ?, ?)";
+  const values = [req.body.name, req.body.email, req.body.age, req.body.gender];
+  db.query(sql, values, (err, result) => {
+    if (err)
+      return res.json({ message: "Something unexpected has occured" + err });
+    return res.json({ success: "Student added successfully" });
+  });
+});
 
 app.listen(port, () => {
-    console.log(`listening on port ${port} `);
-  });
+  console.log(`listening on port ${port} `);
+});
