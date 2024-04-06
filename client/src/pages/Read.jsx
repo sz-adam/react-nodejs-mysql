@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Edit() {
+function Read() {
   return (
     <div>
       
@@ -8,4 +8,4 @@ function Edit() {
   )
 }
 
-export default Edit
+export default Read

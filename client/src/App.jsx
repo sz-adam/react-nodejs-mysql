@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import Home from "./pages/Home";
-import Edit from "./pages/Edit";
+import Read from "./pages/Read";
 import Create from "./pages/Create";
 import Update from "./pages/Update";
 
@@ -13,7 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/create" element={<Create />} />
-        <Route path="edit/:id" element={<Edit />} />
+        <Route path="read/:id" element={<Read />} />
         <Route path="/update/:id" element={<Update />} />
       </Routes>
     </BrowserRouter>

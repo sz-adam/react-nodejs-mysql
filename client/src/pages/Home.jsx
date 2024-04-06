@@ -45,8 +45,8 @@ function Home() {
                     <td>{student.age}</td>
                     <td>{student.gender}</td>
                     <td>
-                      <Link className="btn mx-2 btn-success m-2">Read</Link>
-                      <Link className="btn mx-2 btn-success">Edit</Link>
+                      <Link to={`/update/${student.id}`} className="btn mx-2 btn-success m-2">Update</Link>
+                      <Link to={`/read/${student.id}`} className="btn mx-2 btn-success">Read</Link>
                       <button className="btn mx-2 btn-danger">Delete</button>
                     </td>
                   </tr>
