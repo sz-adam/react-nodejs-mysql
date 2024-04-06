@@ -39,26 +39,31 @@ function Update() {
         <h1>User {id}</h1>
         <div className="d-flex justify-content-end">
           <Link to="/" className="btn btn-success">
-           Back
+            Back
           </Link>
         </div>
         {data.map((student) => {
           return (
             <form onSubmit={handleSubmit} key={student.id}>
-            <div className="form-group my-3 d-flex justify-content-around" style={{fontWeight: 'bold'}}>
+              <div
+                className="form-group my-3 d-flex justify-content-around"
+                style={{ fontWeight: "bold" }}
+              >
                 <label htmlFor="name">Name</label>
                 <input
                   value={student.name}
                   type="text"
                   name="name"
                   required
-                
                   onChange={(e) =>
                     setData([{ ...data[0], name: e.target.value }])
                   }
                 />
               </div>
-              <div className="form-group my-3 d-flex justify-content-around" style={{fontWeight: 'bold'}}>
+              <div
+                className="form-group my-3 d-flex justify-content-around"
+                style={{ fontWeight: "bold" }}
+              >
                 <label htmlFor="email">Email</label>
                 <input
                   value={student.email}
@@ -70,7 +75,10 @@ function Update() {
                   }
                 />
               </div>
-              <div className="form-group my-3 d-flex justify-content-around" style={{fontWeight: 'bold'}}>
+              <div
+                className="form-group my-3 d-flex justify-content-around"
+                style={{ fontWeight: "bold" }}
+              >
                 <label htmlFor="gender">Gender</label>
                 <input
                   value={student.gender}
@@ -82,7 +90,10 @@ function Update() {
                   }
                 />
               </div>
-              <div className="form-group my-3 d-flex justify-content-around" style={{fontWeight: 'bold'}}>
+              <div
+                className="form-group my-3 d-flex justify-content-around"
+                style={{ fontWeight: "bold" }}
+              >
                 <label htmlFor="age">Age</label>
                 <input
                   value={student.age}
