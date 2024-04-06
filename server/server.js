@@ -35,6 +35,15 @@ app.get("/students", (req, res) => {
   });
 });
 
+app.get("/get_student/:id", (req, res) => {
+  const id = req.params.id;
+  const sql = "SELECT * FROM student_details WHERE `id`= ?";
+  db.query(sql, [id], (err, result) => {
+    if (err) res.json({ message: "Server error" });
+    return res.json(result);
+  });
+});
+
 app.listen(port, () => {
   console.log(`listening on port ${port} `);
 });
